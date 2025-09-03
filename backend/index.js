@@ -10,17 +10,24 @@ const app = express();
 
 // Enable CORS for frontend
 app.use(cors({
-  origin: 'http://localhost:5173', // your frontend URL
+  origin: process.env.NODE_ENV === 'production' 
+    ? [process.env.FRONTEND_URL, 'https://your-frontend-url.onrender.com']
+    : 'http://localhost:5173',
   credentials: true
 }));
 
 app.use(express.json());
 
+// Health check endpoint for Render
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'OK', message: 'Email Analysis System Backend is running' });
+});
+
 // API routes
 app.use("/api", emailRoutes);
 
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI || process.env.MONGODB_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error("MongoDB connection error:", err));
 
