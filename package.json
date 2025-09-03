@@ -1,0 +1,28 @@
+{
+  "name": "email-security-analyzer",
+  "version": "1.0.0",
+  "description": "Email security analysis system for ESP detection and delivery chain analysis",
+  "scripts": {
+    "install:backend": "cd backend && npm install",
+    "install:frontend": "cd frontend && npm install",
+    "install:all": "npm run install:backend && npm run install:frontend",
+    "dev:backend": "cd backend && node index.js",
+    "dev:frontend": "cd frontend && npm run dev",
+    "start": "echo 'Use npm run dev:backend and npm run dev:frontend in separate terminals'"
+  },
+  "keywords": [
+    "email",
+    "security",
+    "analysis",
+    "esp",
+    "imap",
+    "react",
+    "nodejs"
+  ],
+  "author": "Student",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "Email Security Analyzer Academic Project"
+  }
+}

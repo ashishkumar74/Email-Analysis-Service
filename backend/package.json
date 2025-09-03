@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "imap-simple": "^5.1.0",
+    "mailparser": "^3.7.4",
+    "mongoose": "^8.18.0",
+    "utf7": "^1.0.2"
+  }
+}
