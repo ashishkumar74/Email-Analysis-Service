@@ -1,4 +1,12 @@
 {
+  "name": "email-analysis-backend",
+  "version": "1.0.0",
+  "description": "Email Security Analysis Backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
@@ -7,5 +15,8 @@
     "mailparser": "^3.7.4",
     "mongoose": "^8.18.0",
     "utf7": "^1.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
