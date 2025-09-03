@@ -17,11 +17,11 @@ app.use(cors({
     const allowedOrigins = [
       'http://localhost:5173',
       'http://localhost:3000',
-      'https://email-analysis-frontend.onrender.com',
-      // Add your actual frontend URL here when you get it
+      'https://email-security-analyzersss.onrender.com', // Your actual frontend URL
+      'https://email-security-analyzerss.onrender.com',  // Your backend URL (for testing)
     ];
     
-    // Allow any onrender.com domain for your frontend
+    // Allow any onrender.com domain for your project
     if (origin.includes('.onrender.com') || allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
