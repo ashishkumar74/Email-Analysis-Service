@@ -2,32 +2,21 @@ services:
   - type: web
     name: email-analysis-backend
     env: node
+    plan: free
     buildCommand: cd backend && npm install
     startCommand: cd backend && npm start
-    healthCheckPath: /api/health
     envVars:
       - key: NODE_ENV
         value: production
       - key: PORT
         value: 10000
-      - key: MONGODB_URI
-        fromDatabase:
-          name: email-analysis-db
-          property: connectionString
 
   - type: web
     name: email-analysis-frontend
     env: static
+    plan: free
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/dist
     envVars:
       - key: VITE_API_URL
-        fromService:
-          type: web
-          name: email-analysis-backend
-          property: host
-
-databases:
-  - name: email-analysis-db
-    databaseName: email_analysis
-    user: admin
+        value: https://email-analysis-backend.onrender.com

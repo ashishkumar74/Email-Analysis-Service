@@ -26,10 +26,14 @@ app.get('/api/health', (req, res) => {
 // API routes
 app.use("/api", emailRoutes);
 
-// MongoDB connection
-mongoose.connect(process.env.MONGO_URI || process.env.MONGODB_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => console.error("MongoDB connection error:", err));
+// MongoDB connection (optional for free deployment)
+if (process.env.MONGO_URI || process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGO_URI || process.env.MONGODB_URI)
+    .then(() => console.log("MongoDB connected"))
+    .catch(err => console.error("MongoDB connection error:", err));
+} else {
+  console.log("No MongoDB URI provided - running without database (using mock data)");
+}
 
 // Start server
 const PORT = process.env.PORT || 5000;
