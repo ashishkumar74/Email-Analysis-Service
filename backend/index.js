@@ -10,9 +10,24 @@ const app = express();
 
 // Enable CORS for frontend
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? [process.env.FRONTEND_URL, 'https://your-frontend-url.onrender.com']
-    : 'http://localhost:5173',
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    const allowedOrigins = [
+      'http://localhost:5173',
+      'http://localhost:3000',
+      'https://email-analysis-frontend.onrender.com',
+      // Add your actual frontend URL here when you get it
+    ];
+    
+    // Allow any onrender.com domain for your frontend
+    if (origin.includes('.onrender.com') || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    
+    callback(new Error('Not allowed by CORS'));
+  },
   credentials: true
 }));
 

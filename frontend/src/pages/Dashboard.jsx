@@ -14,8 +14,9 @@ export default function Dashboard() {
     setLoading(true);
     setError("");
     try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const res = await fetch(
-        `http://localhost:5000/api/email-analysis?subject=${encodeURIComponent(subject)}`
+        `${apiUrl}/api/email-analysis?subject=${encodeURIComponent(subject)}`
       );
       const data = await res.json();
       if (data.error) setError(data.error);
