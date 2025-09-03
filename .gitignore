@@ -52,7 +52,3 @@ jspm_packages/
 
 # Yarn Integrity file
 .yarn-integrity
-
-DEPLOYMENT.md
-netlify.toml
-app.json
